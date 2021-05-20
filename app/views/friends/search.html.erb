@@ -1,0 +1,11 @@
+ 
+<h3>Search Result</h3>  
+<% @friends.each do |friend| %>  
+<p><%= friend.first_name %>,
+<%= friend.last_name %>,
+<%= friend.email %>,
+<%= friend.phone %>,
+<%= friend.twitter %></p>
+<% end %>
+
+    
