@@ -4,7 +4,7 @@ class FriendsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /friends or /friends.json
   def index
-    @friends = current_user&.friends
+    @friends =  current_user&.friends
   end
 
   # GET /friends/1 or /friends/1.json
@@ -19,9 +19,7 @@ class FriendsController < ApplicationController
 
   def search  
         @query = params[:search]
-        #@friends = Friend.where("friends.first_name LIKE?",["%#[@QUERY]%"])
-        # @parameter = params[:search].down
-         @friends = current_user.friends.where("lower(first_name) LIKE ?", "%#{@query}%") 
+        @friends = current_user.friends.where("lower(first_name) LIKE ?", "%#{@query}%") 
   end
     
   
