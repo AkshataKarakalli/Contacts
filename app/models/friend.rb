@@ -4,4 +4,9 @@ class Friend < ApplicationRecord
     validates :email, presence: true
                 
     belongs_to :user
-end
+
+    def full_name
+        [first_name, last_name].join(' ')
+    end
+
+    end

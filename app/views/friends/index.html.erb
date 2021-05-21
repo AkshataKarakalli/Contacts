@@ -5,8 +5,8 @@
  <table>
    <thead>
      <tr>
-       <th>First name</th>
-       <th>Last name</th>
+       <th>Full name</th>
+       
        <th>Email</th>
        <th>Phone</th>
        <th>Twitter</th>
@@ -20,8 +20,8 @@
      <% @friends.each do |friend| %>
        
        <tr>
-         <td><%= friend.first_name %></td>
-         <td><%= friend.last_name %></td>
+         <td><%= friend.full_name %></td>
+       
          <td><%= friend.email %></td>
          <td><%= friend.phone %></td>
          <td><%= friend.twitter %></td>
