@@ -28,6 +28,13 @@
   <strong>DOB:</strong>
   <%= @friend.dob %>
 </p>
+<p>
+  <strong>image:</strong>
+  <div style="width:400px; height:auto">
+     <%= image_tag(@friend.image, style:'width:100%') %>
+  </div>
+</p>
+  
 
 <%= link_to 'Edit', edit_friend_path(@friend) %> |
 <%= link_to 'Back', friends_path %>
