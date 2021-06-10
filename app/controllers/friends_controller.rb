@@ -4,7 +4,11 @@ class FriendsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /friends or /friends.json
   def index
-    @friends =  current_user&.friends
+    @friends =  Friend.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data current_user.friends.to_csv }
+    end
   end
 
   # GET /friends/1 or /friends/1.json
@@ -65,6 +69,11 @@ class FriendsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def import 
+      
+      Friend.import(params[:file])
+      redirect_to friends_path,notice: "friends added successfully"
+  end
 
   def correct_user
     @friend = current_user.friends.find_by(id: params[:id])
@@ -79,7 +88,7 @@ class FriendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friend_params
-      params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :user_id, :dob, :image)
+      params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :user_id, :dob )
       
 
     end

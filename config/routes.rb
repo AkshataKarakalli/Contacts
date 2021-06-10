@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :friends
+  resources :friends do
+    collection { post :import }
+  end
   get 'home/index'
   get 'search' => 'friends#search'
   #root 'home#index'
