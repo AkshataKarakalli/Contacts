@@ -23,6 +23,7 @@ require  'activerecord-import/adapters/postgresql_adapter'
             end
         end
     end
+    
     def self.import(file)
         #friends = []
         CSV.foreach(file.path, headers: true) do |row|

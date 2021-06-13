@@ -46,8 +46,8 @@
  <%= link_to "Report", friends_path(format: "csv"), class: 'btn btn-default' %>
  <h3>Import Friends</h3>
  <%= form_tag import_friends_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "upload friends" %>
+   <%= file_field_tag :file %>
+   <%= submit_tag "upload friends" %>
  <% end %>
  <%= link_to 'New Friend', new_friend_path %>
   <% else %>

@@ -84,12 +84,10 @@ class FriendsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def import 
-      
-      Friend.import(params[:file])
-      redirect_to friends_path,notice: "friends added successfully"
+  def import
+    Friend.import(params[:file])
+    redirect_to friends_path, notice:"Friends  Added Successfully"
   end
-
   def correct_user
     @friend = current_user.friends.find_by(id: params[:id])
     redirect_to friends_path, notice: "Not Authorized To Edit this Friend" if @friend.nil?
@@ -103,7 +101,7 @@ class FriendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friend_params
-      params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :user_id, :dob, :category_id )
+      params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :user_id, :dob, :category_id)
       
 
     end
