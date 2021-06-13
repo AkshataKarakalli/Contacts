@@ -31,6 +31,14 @@
          <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
         
        </li>
+       <li class="nav-item">
+         <%= link_to "Categories", categories_path, class: "nav-link" %>
+        
+       </li>
+       <li class="nav-item">
+         <%= link_to "Search", search_path, class: "nav-link" %>
+        
+       </li>
       <% else %>
        <li class="nav-item">
          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
@@ -40,10 +48,10 @@
          <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
         
        </li>
-       <li class="nav-item">
-         <%= link_to "Search", search_path, class: "nav-link" %>
-        
-       </li>
+       
+       
+       
+       
       <% end %> 
     </ul>
     <%= form_tag(search_path, :method => "get", class: 'navbar-form navbar-left') do %>  

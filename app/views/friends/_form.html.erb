@@ -39,8 +39,10 @@
     <%= form.label :dob %>
      <%= form.text_field :dob %>
   </div>
-  
-  
+  <div class="field">
+    <%= form.label :Category %>
+    <%= form.select :category_id, Category.all.map {|c| [c.category,c.id]} %>
+  </div>
   
   <div class ="field">
     <%= form.number_field :user_id,

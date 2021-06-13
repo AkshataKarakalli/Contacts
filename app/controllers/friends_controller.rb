@@ -5,6 +5,14 @@ class FriendsController < ApplicationController
   # GET /friends or /friends.json
   def index
     @friends =  Friend.all
+    @categories = Category.all
+    cate = params[:cate]
+    if !cate.nil?
+      @friends = Friend.where(:category_id => cate)
+    else
+      @friends = Friend.all
+    end
+
     respond_to do |format|
       format.html
       format.csv { send_data current_user.friends.to_csv }
@@ -19,6 +27,9 @@ class FriendsController < ApplicationController
   def new
     #@friend = Friend.new
     @friend = current_user.friends.build
+    #@categories = Category.all.map {|c| [c.category,c.id]} 
+
+
   end
 
   def search  
@@ -30,12 +41,15 @@ class FriendsController < ApplicationController
 
   # GET /friends/1/edit
   def edit
+    #@categories = Category.all.map {|c| [c.category,c.id]} 
+
   end
 
   # POST /friends or /friends.json
   def create
     #@friend = Friend.new(friend_params)
     @friend = current_user.friends.build(friend_params)
+    #@friend.category_id = params[:category_id] 
 
     respond_to do |format|
       if @friend.save
@@ -52,6 +66,7 @@ class FriendsController < ApplicationController
   def update
     respond_to do |format|
       if @friend.update(friend_params)
+         #@friend.category_id = params[:category_id]
         format.html { redirect_to @friend, notice: "Friend was successfully updated." }
         format.json { render :show, status: :ok, location: @friend }
       else
@@ -88,7 +103,7 @@ class FriendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friend_params
-      params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :user_id, :dob )
+      params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :user_id, :dob, :category_id )
       
 
     end

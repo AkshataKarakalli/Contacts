@@ -1,6 +1,5 @@
 class Friend < ApplicationRecord
 require "csv"
-
 require 'activerecord-import/base'
 require  'activerecord-import/adapters/postgresql_adapter'
 
@@ -9,13 +8,13 @@ require  'activerecord-import/adapters/postgresql_adapter'
     validates :email, presence: true
                 
     belongs_to :user
-    has_many :comments
+    belongs_to :category
 
     #def full_name
         #[first_name, last_name].join(' ')
     #end
     has_one_attached :image
-    has_one_attached :file
+    
     def self.to_csv 
         CSV.generate(headers: true) do |csv|
             csv << column_names

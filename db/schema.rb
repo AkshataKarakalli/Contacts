@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_101736) do
+ActiveRecord::Schema.define(version: 2021_06_10_163453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2021_06_07_101736) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "friends", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -53,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_101736) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.string "dob"
+    t.integer "category_id"
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
