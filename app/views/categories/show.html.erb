@@ -4,7 +4,7 @@
   <strong>Category:</strong>
   <%= @category.category %>
 </p>
-<h3> Friends under this category </h3>
+<h3> Contacts under this category </h3>
 <% Friend.where(category_id: @category.id).each do |friend| %>
 <p> <%= friend.first_name %>, 
  <%= friend.last_name %>, 

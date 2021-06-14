@@ -6,6 +6,9 @@ require  'activerecord-import/adapters/postgresql_adapter'
     validates :first_name, presence: true,
                 length: {minimum: 5}
     validates :email, presence: true
+    validates :last_name, presence: true
+    validates :phone, presence: true,
+                length: {maximum: 10}
                 
     belongs_to :user
     belongs_to :category
@@ -27,7 +30,7 @@ require  'activerecord-import/adapters/postgresql_adapter'
     def self.import(file)
         #friends = []
         CSV.foreach(file.path, headers: true) do |row|
-            byebug
+            
             Friend.create! row.to_hash
          #friends << Friend.new(row.to_h)
         end
