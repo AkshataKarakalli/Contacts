@@ -46,7 +46,9 @@
   
  
  
+ <h3>Download File</h3>
  
+ <%= link_to "Report", friends_path(format: "csv"), class: 'btn btn-default' %>
  <h3>Import Friends</h3>
  <%= form_tag import_friends_path, multipart: true do %>
    <%= file_field_tag :file %>
