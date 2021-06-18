@@ -17,5 +17,10 @@
 <% end %>
 
 
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
+
+<h3>Download File</h3>
+ 
+ <%= link_to "Report", friends_path(format: "csv"), class: 'btn btn-default' %>

@@ -1,12 +1,13 @@
 
 <% if user_signed_in? %>
- <h1>Contacts List</h1>
+ <h1>Contacts</h1>
  
   <table>
    <thead>
      <tr>
        <th>First name</th>
        <th>Last name</th>
+       
        <th>Email</th>
        <th>Phone</th>
        <th>Twitter</th>
@@ -19,8 +20,10 @@
      <% @friends.each do |friend| %>
        <% if friend.user == current_user %>
         <tr>
-          <td><%= friend.first_name %></td>
+          
+          <td><%= friend.first_name%> </td>
           <td><%= friend.last_name %></td>
+          
           <td><%= friend.email %></td>
           <td><%= friend.phone %></td>
           <td><%= friend.twitter %></td>
@@ -30,6 +33,7 @@
           <td><%= link_to 'Show', friend %></td>
           <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
           <td><%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         
           
         </tr>
        <% end %>
@@ -42,8 +46,7 @@
   
  
  
- <h3>Download File</h3>
- <%= link_to "Report", friends_path(format: "csv"), class: 'btn btn-default' %>
+ 
  <h3>Import Friends</h3>
  <%= form_tag import_friends_path, multipart: true do %>
    <%= file_field_tag :file %>

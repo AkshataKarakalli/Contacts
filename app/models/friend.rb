@@ -9,6 +9,8 @@ require  'activerecord-import/adapters/postgresql_adapter'
     validates :last_name, presence: true
     validates :phone, presence: true,
                 length: {maximum: 10}
+    validates :gender, presence: true,
+                 length: {maximum: 1}
                 
     belongs_to :user
     belongs_to :category
